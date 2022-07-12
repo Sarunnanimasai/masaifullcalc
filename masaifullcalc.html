@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 500px;
+        height: 500px;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;      }
+     h1 {
+      text-align: center;
+      color: teal;
+      padding-top: 10px;
+     }
+     #display {
+      width:480px;
+      height: 50px;
+      margin: auto;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    
+     }
+     .buttons {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-template-rows: repeat(4,1fr);
+      gap: 7px;
+     }
+     .button {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;      padding: 16.5px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      margin-top: 20%;
+      width: 60px;
+      margin-left: 12%;
+     }
+     .button:hover{
+      cursor: pointer;
+      background-color: black;
+      color: white;
+      transition: 0.3s ease-in-out;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Masai Calculator</h1>
+       <div id="display"></div>
+    <div class="buttons">
+      <div class="button">1</div>
+      <div class="button">2</div>
+      <div class="button">3</div>
+      <div class="button">+</div>
+      <div class="button">4</div>
+      <div class="button">5</div>
+      <div class="button">6</div>
+      <div class="button">-</div>
+      <div class="button">7</div>
+      <div class="button">8</div>
+      <div class="button">9</div>
+      <div class="button">*</div>
+      <div class="button">0</div>
+      <div class="button">C</div>
+      <div class="button">=</div>
+      <div class="button">/</div>
+    </div>
+    </div>
+  </body>
+</html>
+<script>
+  let display = document.getElementById("display");
+  let buttons = Array.from(document.getElementsByClassName('button'));
+  buttons.map( button =>{
+    button.addEventListener('click',(e)=>{
+      switch(e.target.innerText){
+        case 'C' : display.innerText = '';
+        break;
+        case '=' : display.innerText = eval(display.innerText);
+        break;
+        default:
+          display.innerText += e.target.innerText;
+      }
+    })
+  })
+</script>
